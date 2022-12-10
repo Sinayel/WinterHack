@@ -55,7 +55,6 @@ class GUI:
         # create an entry box for typing the message
         self.entryName = Entry(self.login,
                                font="Helvetica 14")
-
         self.entryName.place(relwidth=0.4,
                              relheight=0.12,
                              relx=0.35,
@@ -212,4 +211,4 @@ class GUI:
 
 
 # create a GUI class object
-g = GUI()
+GUI()
