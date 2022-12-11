@@ -18,7 +18,7 @@ currentlevel = 0
 
 translator = Translator()
 
-with open("phrases.csv") as f:
+with open("WinterHack\\phrases.csv") as f:
     eyes = DictReader(f)
     matches = []
 
@@ -31,11 +31,11 @@ for i in range(4):
     matches.remove(exercise)
     type_ = randint(0, 1)
     if type_ == 0:
-        question = translator.translate(exercise["question"], dest=language).text
-        answer = translator.translate(exercise["question"], dest=baselanguage).text
+        question = translator.translate(exercise["question"], dest=language)
+        answer = translator.translate(exercise["question"], dest=baselanguage)
     else:
-        question = translator.translate(exercise["question"], dest=baselanguage).text
-        answer = translator.translate(exercise["question"], dest=language).text
+        question = translator.translate(exercise["question"], dest=baselanguage)
+        answer = translator.translate(exercise["question"], dest=language)
 
     print(question)
     user = input()

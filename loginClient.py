@@ -2,23 +2,23 @@ import socket
 import threading
 from tkinter import *
 
-# this retrieves the ip address of the pc and connects to port 9001
-PORT = 9001
-SERVER = socket.gethostbyname(socket.gethostname())
 
-# Address is stored as a tuple
-ADDRESS = (SERVER, PORT)
-
-# encoding and decoding will occur
-FORMAT = "utf-8"
-
-# Fast communication between client and server
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(ADDRESS)
-
-
-# class for the GUI chat
 class GUI:
+    # this retrieves the ip address of the pc and connects to port 9001
+    PORT = 9001
+    SERVER = socket.gethostbyname(socket.gethostname())
+
+    # Address is stored as a tuple
+    ADDRESS = (SERVER, PORT)
+
+    # encoding and decoding will occur
+    FORMAT = "utf-8"
+
+    # Fast communication between client and server
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.connect(ADDRESS)
+
+    # class for the GUI chat
     # constructor method
     def __init__(self):
         # -----------------------------display login if you want to modify it----------------------------------
@@ -182,11 +182,11 @@ class GUI:
     def receive(self):
         while True:
             try:
-                message = client.recv(1024).decode(FORMAT)
+                message = self.client.recv(1024).decode(self.FORMAT)
 
                 # if the messages from the server is NAME send the client's name
                 if message == 'NAME':
-                    client.send(self.name.encode(FORMAT))
+                    self.client.send(self.name.encode(self.FORMAT))
                 else:
                     # insert messages to chat box
                     self.textCons.config(state=NORMAL)
@@ -198,7 +198,7 @@ class GUI:
             except:
                 # an error will be printed on the command line or console if there's an error
                 print("An error occurred!")
-                client.close()
+                self.client.close()
                 break
 
     # send messages
@@ -206,7 +206,7 @@ class GUI:
         self.textCons.config(state=DISABLED)
         while True:
             message = f"{self.name}: {self.msg}"
-            client.send(message.encode(FORMAT))
+            self.client.send(message.encode(self.FORMAT))
             break
 
 
