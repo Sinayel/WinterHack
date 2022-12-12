@@ -175,21 +175,30 @@ scrollFrame.place(relx=0.05, rely=0.38, relwidth= 0.9, relheight=0.52)
 
 # tutorial=tk.Label(scrollFrame, font=("Cambria",12))
 
-T = tk.Text(scrollFrame)
+T = tk.Text(scrollFrame, font=("Cambria",12))
 scroll = tk.Scrollbar(T)
 scroll.pack(side=tk.RIGHT, fill=tk.Y)
 T.place(relheight=0.9, relwidth=0.9, relx=0.05, rely=0.05)
 scroll.config(command=T.yview)
 T.config(yscrollcommand=scroll.set)
-quote = """Welcome to WorldSpeak! This is an application designed to assist 
-Whether 'tis nobler in the mind to suffer
-The slings and arrows of outrageous fortune
-Or to take arms against a sea of troubles
-And by opposing end them. To die, to sleep--
-No more--and by a sleep to say we end
-The heartache, and the thousand natural shocks
-That flesh is heir to. 'Tis a consummation
-Devoutly to be wished."""
+quote = """Welcome to WorldSpeak! This is an application designed to assist people in 
+communicating with different world languages. It is a novel language
+learning platform where users may complete exercises and practice 
+speaking with a native speaker or someone else learning the language. 
+Practice makes perfect!
+
+ -> The navigation bar on the left is the main element of the 
+    application. Click on the buttons to move around the site.
+
+ -> To complete exercises, first select what language you speak, 
+    and what language you would like to practice. Then, select 
+    the difficulty of the exercises. Harder exercises grant more xp.
+
+ -> Stay tuned for more updates! If you have a bug or a suggestion, 
+    click on "report a bug" in the top left corner.
+
+Thank you, and we hope you continue to use WorldSpeak!
+"""
 T.insert(tk.END, quote)
 T.config(state="disabled")
 
